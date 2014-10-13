@@ -1,0 +1,57 @@
+#VRML_SIM V7.3.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.990136 0.139618 -0.011757 5.49236
+  position 0.62355 2.88272 4.24706
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  location 0 2.345 0
+}
+DEF FLOOR CheckeredFloor {
+  scale 3 3 3
+}
+Hoap2 {
+  hidden position_0_0 -2.58723e-07
+  hidden position_0_1 5.0107e-07
+  hidden position_0_2 5.03153e-07
+  hidden position_0_3 1.03398e-08
+  hidden position_1_0 -9.54754e-07
+  hidden position_1_1 -9.4757e-07
+  hidden position_2_0 -5.90609e-07
+  hidden position_3_0 9.51933e-07
+  hidden position_4_0 -6.11542e-07
+  hidden position_5_0 -6.6031e-07
+  hidden position_6_0 -1.07709e-06
+  hidden translation_8 -1.62686e-08 -0.0329438 0.0112347
+  hidden rotation_8 1 5.4802e-09 5.51255e-09 1.5708
+  hidden position_9_0 -5.85805e-07
+  hidden position_10_0 9.46237e-07
+  hidden position_11_0 -6.0667e-07
+  hidden position_12_0 -6.55385e-07
+  hidden position_13_0 -1.0692e-06
+  hidden translation_15 -1.60826e-08 -0.0329445 0.0112347
+  hidden rotation_15 1 5.47312e-09 5.52023e-09 1.5708
+  hidden position_16_0 8.12746e-07
+  hidden position_17_0 -7.71158e-07
+  hidden position_18_0 1.22296e-07
+  hidden position_19_0 6.21903e-15
+  hidden position_21_0 8.15952e-07
+  hidden position_22_0 7.74483e-07
+  hidden position_23_0 1.22257e-07
+  hidden position_24_0 6.0874e-15
+  hidden position_26_0 3.61377e-10
+  translation 1.27691 0.293584 -0.162373
+  rotation 0.998441 2.25026e-05 -0.0558086 0.00518119
+  controller "h"
+}
