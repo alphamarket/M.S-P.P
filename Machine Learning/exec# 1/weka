@@ -1,0 +1,2 @@
+#!/bin/bash
+nohup java -Xmx1000M -jar /opt/weka-3-6-11/weka.jar>/dev/null 2>&1
