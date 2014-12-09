@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0040)http://planning.cs.uiuc.edu/node659.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>13.1.2.2 A differential drive</title>
+<meta name="description" content="13.1.2.2 A differential drive">
+<meta name="keywords" content="web">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta name="Generator" content="LaTeX2HTML v2008">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="http://planning.cs.uiuc.edu/web.css">
+
+<link rel="next" href="http://planning.cs.uiuc.edu/node660.html">
+<link rel="previous" href="http://planning.cs.uiuc.edu/node658.html">
+<link rel="up" href="http://planning.cs.uiuc.edu/node657.html">
+<link rel="next" href="http://planning.cs.uiuc.edu/node660.html">
+</head>
+
+<body text="#000000" bgcolor="#FFFFFF" cz-shortcut-listen="true">
+
+<div class="navigation"><hr> <a name="tex2html1" href="http://planning.cs.uiuc.edu/"><img align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/title3.gif" alt="title3.gif"></a> <br> 
+<a name="tex2html12115" href="http://planning.cs.uiuc.edu/node660.html">
+<img width="37" height="24" align="BOTTOM" border="0" alt="next" src="./13.1.2.2 A differential drive_files/next.gif"></a> 
+<a name="tex2html12109" href="http://planning.cs.uiuc.edu/node657.html">
+<img width="26" height="24" align="BOTTOM" border="0" alt="up" src="./13.1.2.2 A differential drive_files/up.gif"></a> 
+<a name="tex2html12103" href="http://planning.cs.uiuc.edu/node658.html">
+<img width="63" height="24" align="BOTTOM" border="0" alt="previous" src="./13.1.2.2 A differential drive_files/prev.gif"></a> 
+<a name="tex2html12111" href="http://planning.cs.uiuc.edu/node1.html">
+<img width="65" height="24" align="BOTTOM" border="0" alt="contents" src="./13.1.2.2 A differential drive_files/contents.gif"></a> 
+<a name="tex2html12113" href="http://planning.cs.uiuc.edu/node859.html">
+<img width="43" height="24" align="BOTTOM" border="0" alt="index" src="./13.1.2.2 A differential drive_files/index.gif"></a>
+<br>
+<b> Next:</b> <a name="tex2html12116" href="http://planning.cs.uiuc.edu/node660.html">13.1.2.3 A simple unicycle</a>
+<b>Up:</b> <a name="tex2html12110" href="http://planning.cs.uiuc.edu/node657.html">13.1.2 Kinematics for Wheeled</a>
+<b> Previous:</b> <a name="tex2html12104" href="http://planning.cs.uiuc.edu/node658.html">13.1.2.1 A simple car</a>
+<hr> <p>
+</p></div>
+<!--End of Navigation Panel-->
+
+<h3><a name="SECTION05112200000000000000">
+<span class="arabic">13</span>.<span class="arabic">1</span>.<span class="arabic">2</span>.<span class="arabic">2</span> A differential drive</a>
+</h3>
+
+<p>
+<a name="77484"></a>
+
+</p><p>
+Most indoor mobile robots do not move like a car.  For example,
+consider the mobile robotics platform shown in Figure
+<a href="http://planning.cs.uiuc.edu/node659.html#fig:pioneer">13.2</a>a.  This is an example of the most popular way to
+drive indoor mobile robots.  There are two main wheels, each of which
+is attached to its own motor.  A third wheel (not visible in Figure
+<a href="http://planning.cs.uiuc.edu/node659.html#fig:pioneer">13.2</a>a) is placed in the rear to passively roll along
+while preventing the robot from falling over.
+
+</p><p>
+
+</p><div align="CENTER"><a name="fig:pioneer"></a><a name="79599"></a>
+<table>
+<caption align="BOTTOM"><strong>Figure 13.2:</strong>
+(a) The Pioneer 3-DX8 (courtesy of
+ActivMedia Robotics: MobileRobots.com), and many other mobile robots
+use a differential drive. In addition to the two drive wheels, a
+caster wheel (as on the bottom of an office chair) is placed in the
+rear center to prevent the robot from toppling over.  (b) The
+parameters of a generic differential-drive robot.  </caption>
+<tbody><tr><td><img width="595" height="399" border="0" src="./13.1.2.2 A differential drive_files/img5518.gif" alt="\begin{figure}\begin{center}
+\begin{tabular}{ccc}
+\psfig{file=figs/pioneer.ps,wi...
+...ffdrive.eps,width=2.6in} \\
+(a) &amp; &amp; (b)
+\end{tabular}
+\end{center}\end{figure}"></td></tr>
+</tbody></table>
+</div>
+
+<p>
+
+</p><div align="CENTER"><a name="fig:diffdrive2"></a><a name="79600"></a>
+<table>
+<caption align="BOTTOM"><strong>Figure 13.3:</strong>
+(a) Pure translation occurs when both
+wheels move at the same angular velocity<a name="79931"></a>; (b) pure rotation
+occurs when the wheels move at opposite velocities.</caption>
+<tbody><tr><td><img width="476" height="222" border="0" src="./13.1.2.2 A differential drive_files/img5519.gif" alt="\begin{figure}\begin{center}
+\begin{tabular}{ccc}
+\psfig{file=figs/diffdrive2.ep...
+...drive2b.eps,width=1.8in} \\
+(a) &amp; &amp; (b)
+\end{tabular}
+\end{center}\end{figure}"></td></tr>
+</tbody></table>
+</div>
+
+<p>
+To construct a simple model of the constraints that arise from the
+differential drive, only the distance <span class="MATH"><img width="18" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img83.gif" alt="$ L$"></span> between the two wheels,
+and the wheel radius, <span class="MATH"><img width="14" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img165.gif" alt="$ r$"></span>, are necessary.  See Figure
+<a href="http://planning.cs.uiuc.edu/node659.html#fig:pioneer">13.2</a>b.  The action vector <!-- MATH
+ $u = (u_r,u_l)$
+ -->
+<span class="MATH"><img width="97" height="37" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5520.gif" alt="$ u = (u_r,u_l)$"></span> directly
+specifies the two angular wheel velocities (e.g., in radians per
+second).  Consider how the robot moves as different actions are
+applied.  See Figure <a href="http://planning.cs.uiuc.edu/node659.html#fig:diffdrive2">13.3</a>. If <!-- MATH
+ $u_l = u_r > 0$
+ -->
+<span class="MATH"><img width="98" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5521.gif" alt="$ u_l = u_r &gt; 0$"></span>, then
+the robot moves forward in the direction that the wheels are pointing.
+The speed is proportional to <span class="MATH"><img width="14" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img165.gif" alt="$ r$"></span>.  In general, if <span class="MATH"><img width="64" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5522.gif" alt="$ u_l = u_r$"></span>, then
+the distance traveled over a duration <span class="MATH"><img width="12" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img1142.gif" alt="$ t$"></span> of time is <span class="MATH"><img width="36" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5523.gif" alt="$ r t u_l$"></span>
+(because <span class="MATH"><img width="27" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5524.gif" alt="$ t u_l$"></span> is the total angular displacement of the wheels).  If
+<!-- MATH
+ $u_l = -u_r \not = 0$
+ -->
+<span class="MATH"><img width="113" height="34" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5525.gif" alt="$ u_l = -u_r \not = 0$"></span>, then the robot rotates clockwise because the
+wheels are turning in opposite directions.  This motivates the
+placement of the body-frame origin at the center of the axle between
+the wheels.  By this assignment, no translation occurs if the wheels
+rotate at the same rate but in opposite directions.
+
+</p><p>
+Based on these observations, the configuration transition equation is
+</p><p></p>
+<div align="CENTER" class="mathdisplay"><a name="eqn:diffdrive"></a><!-- MATH
+ \begin{equation}
+\begin{split}
+{\dot x}& = \frac{r}{2} (u_l + u_r) \cos \theta \\
+{\dot y}& = \frac{r}{2} (u_l + u_r) \sin \theta \\
+{\dot \theta}& = \frac{r}{L} (u_r - u_l) .
+\end{split}
+\end{equation}
+ -->
+<table class="equation" cellpadding="0" width="100%" align="CENTER">
+<tbody><tr valign="MIDDLE">
+<td nowrap="" align="CENTER"><span class="MATH"><img width="160" height="122" border="0" src="./13.1.2.2 A differential drive_files/img5526.gif" alt="\begin{displaymath}\begin{split}{\dot x}&amp; = \frac{r}{2} (u_l + u_r) \cos \theta ...
+...theta  {\dot \theta}&amp; = \frac{r}{L} (u_r - u_l) . \end{split}\end{displaymath}"></span></td>
+<td nowrap="" class="eqno" width="10" align="RIGHT">
+(<span class="arabic">13</span>.<span class="arabic">16</span>)</td></tr>
+</tbody></table></div>
+<br clear="ALL"><p></p>
+The translational part contains <!-- MATH
+ $\cos\theta$
+ -->
+<span class="MATH"><img width="42" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img1449.gif" alt="$ \cos \theta$"></span> and <!-- MATH
+ $\sin\theta$
+ -->
+<span class="MATH"><img width="40" height="17" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img1450.gif" alt="$ \sin \theta$"></span> parts,
+just like the simple car because the differential drive moves in the
+direction that its drive wheels are pointing.  The translation speed
+depends on the average of the angular wheel velocities.  To see this,
+consider the case in which one wheel is fixed and the other rotates.
+This initially causes the robot to translate at <span class="MATH"><img width="33" height="37" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img997.gif" alt="$ 1/2$"></span> of the speed in
+comparison to both wheels rotating.  The rotational speed <!-- MATH
+ ${\dot \theta}$
+ -->
+<span class="MATH"><img width="14" height="21" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img5488.gif" alt="$ {\dot \theta}$"></span>
+is proportional to the change in angular wheel speeds.  The robot's
+rotation rate grows linearly with the wheel radius but reduces
+linearly with respect to the distance between the wheels.
+
+<p>
+It is sometimes preferable to transform the action space.  Let
+<!-- MATH
+ $u_\omega = (u_r + u_l)/2$
+ -->
+<span class="MATH"><img width="140" height="37" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5527.gif" alt="$ u_\omega = (u_r + u_l)/2$"></span> and <!-- MATH
+ $u_\psi = u_r - u_l$
+ -->
+<span class="MATH"><img width="108" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5528.gif" alt="$ u_\psi = u_r - u_l$"></span>.  In this case,
+<span class="MATH"><img width="25" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img191.gif" alt="$ u_\omega $"></span> can be interpreted as an action variable that means
+``translate,'' and <span class="MATH"><img width="26" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5529.gif" alt="$ u_\psi$"></span> means ``rotate.''  Using these actions,
+the configuration transition equation becomes
+</p><p></p>
+<div align="CENTER" class="mathdisplay"><a name="eqn:diffdrive2"></a><!-- MATH
+ \begin{equation}
+\begin{split}
+{\dot x}& = r u_\omega \cos \theta \\
+{\dot y}& = r u_\omega \sin \theta \\
+{\dot \theta}& = \frac{r}{L} u_\psi .
+\end{split}
+\end{equation}
+ -->
+<table class="equation" cellpadding="0" width="100%" align="CENTER">
+<tbody><tr valign="MIDDLE">
+<td nowrap="" align="CENTER"><span class="MATH"><img width="105" height="98" border="0" src="./13.1.2.2 A differential drive_files/img5530.gif" alt="\begin{displaymath}\begin{split}{\dot x}&amp; = r u_\omega \cos \theta  {\dot y}&amp; ...
+...sin \theta  {\dot \theta}&amp; = \frac{r}{L} u_\psi . \end{split}\end{displaymath}"></span></td>
+<td nowrap="" class="eqno" width="10" align="RIGHT">
+(<span class="arabic">13</span>.<span class="arabic">17</span>)</td></tr>
+</tbody></table></div>
+<br clear="ALL"><p></p>
+In this form, the configuration transition equation resembles
+(<a href="http://planning.cs.uiuc.edu/node658.html#eqn:ctecar">13.15</a>) for the simple car (try setting <!-- MATH
+ $u_\psi = \tan
+u_\phi$
+ -->
+<span class="MATH"><img width="100" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5531.gif" alt="$ u_\psi = \tan
+u_\phi$"></span> and <!-- MATH
+ $u_s = r u_\omega$
+ -->
+<span class="MATH"><img width="77" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5532.gif" alt="$ u_s = r u_\omega$"></span>).  A differential drive can easily
+simulate the motions of the simple car.  For the differential drive,
+the rotation rate can be set independently of the translational
+velocity.  The simple car, however, has the speed <span class="MATH"><img width="22" height="33" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5495.gif" alt="$ u_s$"></span> appearing in
+the <!-- MATH
+ ${\dot \theta}$
+ -->
+<span class="MATH"><img width="14" height="21" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img5488.gif" alt="$ {\dot \theta}$"></span> expression.  Therefore, the rotation rate depends on
+the translational velocity.
+
+<p>
+
+</p><div align="CENTER"><a name="fig:diffdrive3"></a><a name="79602"></a>
+<table>
+<caption align="BOTTOM"><strong>Figure 13.4:</strong>
+The shortest path traversed by the
+center of the axle is simply the line segment that connects the initial
+and goal positions in the plane.  Rotations appear to be cost-free.</caption>
+<tbody><tr><td><img width="518" height="203" border="0" src="./13.1.2.2 A differential drive_files/img5533.gif" alt="\begin{figure}\centerline{\psfig{file=figs/diffdrive3.eps,width=4.5in}}\end{figure}"></td></tr>
+</tbody></table>
+</div>
+
+<p>
+Recall the question asked about shortest paths for the Reeds-Shepp and
+Dubins cars.  The same question for the differential drive turns out
+to be uninteresting because the differential drive can cause the
+center of its axle to follow any continuous path in <!-- MATH
+ ${\mathbb{R}}^2$
+ -->
+<span class="MATH"><img width="26" height="19" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img10.gif" alt="$ {\mathbb{R}}^2$"></span>.  As
+depicted in Figure <a href="http://planning.cs.uiuc.edu/node659.html#fig:diffdrive3">13.4</a>, it can move between any two
+configurations by: 1) first rotating itself to point the wheels to the
+goal position, which causes no translation; 2) translating itself to
+the goal position; and 3) rotating itself to the desired orientation,
+which again causes no translation.  The total distance traveled by the
+center of the axle is always the Euclidean distance in <!-- MATH
+ ${\mathbb{R}}^2$
+ -->
+<span class="MATH"><img width="26" height="19" align="BOTTOM" border="0" src="./13.1.2.2 A differential drive_files/img10.gif" alt="$ {\mathbb{R}}^2$"></span> between
+the two desired positions.
+
+</p><p>
+This may seem like a strange effect due to the placement of the
+coordinate origin.  Rotations seem to have no cost.  This can be fixed
+by optimizing the total amount of wheel rotation or time required, if
+the speed is held fixed [<a href="http://planning.cs.uiuc.edu/node858.html#BalMas02">64</a>].  Suppose that <!-- MATH
+ $u_r,u_l \in
+\{-1,0,1\}$
+ -->
+<span class="MATH"><img width="149" height="37" align="MIDDLE" border="0" src="./13.1.2.2 A differential drive_files/img5534.gif" alt="$ u_r,u_l \in
+\{-1,0,1\}$"></span>.  Determining the minimum time required to travel between
+two configurations is quite interesting and is covered in Section
+<a href="http://planning.cs.uiuc.edu/node820.html#sec:geodesic">15.3</a>.  This properly takes into account the cost of
+rotating the robot, even if it does not cause a translation.
+
+</p><p>
+<a name="77537"></a>
+
+</p><p>
+
+</p><div class="navigation"><hr> 
+<a name="tex2html12115" href="http://planning.cs.uiuc.edu/node660.html">
+<img width="37" height="24" align="BOTTOM" border="0" alt="next" src="./13.1.2.2 A differential drive_files/next.gif"></a> 
+<a name="tex2html12109" href="http://planning.cs.uiuc.edu/node657.html">
+<img width="26" height="24" align="BOTTOM" border="0" alt="up" src="./13.1.2.2 A differential drive_files/up.gif"></a> 
+<a name="tex2html12103" href="http://planning.cs.uiuc.edu/node658.html">
+<img width="63" height="24" align="BOTTOM" border="0" alt="previous" src="./13.1.2.2 A differential drive_files/prev.gif"></a> 
+<a name="tex2html12111" href="http://planning.cs.uiuc.edu/node1.html">
+<img width="65" height="24" align="BOTTOM" border="0" alt="contents" src="./13.1.2.2 A differential drive_files/contents.gif"></a> 
+<a name="tex2html12113" href="http://planning.cs.uiuc.edu/node859.html">
+<img width="43" height="24" align="BOTTOM" border="0" alt="index" src="./13.1.2.2 A differential drive_files/index.gif"></a>
+<br>
+<b> Next:</b> <a name="tex2html12116" href="http://planning.cs.uiuc.edu/node660.html">13.1.2.3 A simple unicycle</a>
+<b>Up:</b> <a name="tex2html12110" href="http://planning.cs.uiuc.edu/node657.html">13.1.2 Kinematics for Wheeled</a>
+<b> Previous:</b> <a name="tex2html12104" href="http://planning.cs.uiuc.edu/node658.html">13.1.2.1 A simple car</a>
+<hr> <p>
+</p></div>
+<!--End of Navigation Panel-->
+<address>
+Steven M LaValle
+2012-04-20
+</address>
+
+
+</body></html>

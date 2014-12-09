@@ -1,0 +1,7 @@
+*~
+*.exe
+*.pdb
+*.ilk
+*.wbproj
+controllers/epuck_controller/build
+controllers/epuck_controller/init.pos

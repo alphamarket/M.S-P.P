@@ -1,0 +1,43 @@
+#VRML_SIM V7.3.0 utf8
+WorldInfo {
+  info [
+    "Description"
+    "Author: first name last name <e-mail>"
+    "Date: DD MMM YYYY"
+  ]
+}
+Viewpoint {
+  orientation 0.999313 0.0242719 -0.0280092 4.82428
+  position 3.18101 20.4032 7
+  follow "e-puck"
+}
+Background {
+  skyColor [
+    0.4 0.7 1
+  ]
+}
+PointLight {
+  location 0 100.345 0
+}
+DEF FLOOR CheckeredFloor {
+  scale 10 10 10
+}
+EPuck {
+  hidden linearVelocity_0 0.000411579 8.36052e-06 -0.0264938
+  hidden angularVelocity_0 -0.0337091 -0.278081 -0.000117531
+  hidden translation_2 -0.0260011 0.0200135 -5.56089e-07
+  hidden rotation_2 0.999998 6.91519e-05 -0.00202123 -0.399585
+  hidden linearVelocity_2 0.000515197 -3.73265e-07 -0.0338926
+  hidden angularVelocity_2 -1.72935 -0.27784 -0.026182
+  hidden translation_3 0.0260028 0.0200217 -5.19122e-07
+  hidden rotation_3 0.999998 2.64055e-05 -0.00173551 -0.334395
+  hidden linearVelocity_3 0.000289008 7.57201e-06 -0.0194331
+  hidden angularVelocity_3 -0.937151 -0.277943 -0.0140051
+  translation 4.51261 -7.88804e-05 4.48305
+  rotation -0.221909 0.975062 0.00334659 -0.0239781
+  controller "epuck_controller"
+  extensionSlot [
+    Pen {
+    }
+  ]
+}
