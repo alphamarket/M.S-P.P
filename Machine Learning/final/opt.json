@@ -1,0 +1,9 @@
+{
+    "load_from_saved_thetas": true,
+    "permutation_degree": 3,
+    "select_train_method": "test_train",
+    "test_train_method" : {
+        "train": 0.75,
+        "test" : 0.25
+    }
+}

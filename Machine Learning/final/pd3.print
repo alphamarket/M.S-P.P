@@ -1,0 +1,227 @@
+Processing:    data/mri/body
+    Loading from cached data file...
+Processing:    data/mri/brain
+    Loading from cached data file...
+Processing:    data/mri/knee
+    Loading from cached data file...
+Processing:    data/mri/shoulder
+    Loading from cached data file...
+Processing:    data/mri/spine
+    Loading from cached data file...
+Mixing features with 3 degree.
+Traing for label# 1
+Cost at initial theta (zeros): 0.693147
+Start training....
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0           0.693147                          5.57                
+     1           0.534018      0.0098547          0.632           3
+     2           0.501043       0.104862          0.198           7
+     3           0.466184       0.406353          0.241          18
+     4           0.463202      0.0235592         0.0299           7
+     5           0.405236         3.2947          0.415         118
+     6           0.398813      0.0423231         0.0506           7
+     7           0.398525       0.634705          0.054          45
+     8           0.391956       0.158676         0.0253          64
+     9           0.388903       0.317353         0.0444          46
+    10           0.387605      0.0382232        0.00973          12
+    11           0.385354       0.317353        0.00632         125
+    12            0.38218       0.634705        0.00769         132
+    13           0.381971      0.0559203        0.00227          29
+    14           0.380217       0.963172        0.00516         131
+    15           0.380215    0.000684103       0.000487           7
+    16            0.38005       0.448381       0.000333         243
+    17           0.380049     0.00502987       5.45e-05          25
+
+Local minimum possible.
+
+fminunc stopped because the final change in function value relative to 
+its initial value is less than the default value of the function tolerance.
+
+<stopping criteria details>
+
+Cost at theta found by fminunc: 0.380049
+Traing for label# 2
+Cost at initial theta (zeros): 0.693147
+Start training....
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0           0.693147                          1.25                
+     1           0.678171      0.0147209          0.129           4
+     2           0.584274        1.06926          0.176          47
+     3           0.582105      0.0213504         0.0236           8
+     4           0.517414        3.58771         0.0463         156
+     5           0.516832      0.0194423        0.00755          12
+     6           0.507893        1.88448        0.00989         198
+     7           0.507644      0.0989567        0.00201          39
+     8           0.506831       0.726035       0.000667         241
+     9             0.5068       0.111665       7.71e-05         170
+    10           0.506795      0.0935967       8.89e-06         274
+    11           0.506794       0.305205       9.47e-07         645
+
+Local minimum found.
+
+Optimization completed because the size of the gradient is less than
+the default value of the function tolerance.
+
+<stopping criteria details>
+
+Cost at theta found by fminunc: 0.506794
+Traing for label# 3
+Cost at initial theta (zeros): 0.693147
+Start training....
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0           0.693147                          5.03                
+     1           0.579307     0.00173912           0.51           1
+     2           0.548014      0.0943276          0.249           7
+     3           0.515316       0.255195           0.22          17
+     4           0.507128      0.0823883         0.0723          12
+     5           0.454709        1.80602          0.236          56
+     6           0.454135    0.000985761         0.0258           3
+     7           0.421466        2.58583          0.128          92
+     8           0.421142     0.00331061         0.0121           5
+     9           0.411302        1.76437         0.0367         129
+    10           0.411262     0.00359139        0.00306           7
+    11           0.408983        1.08194        0.00657         182
+    12           0.408982    0.000655975       0.000937           7
+    13           0.408798       0.383708       0.000459         223
+    14           0.408773       0.103983       0.000123         154
+    15           0.408754         1.0803       1.91e-05         553
+    16           0.408754      0.0193407       1.87e-06         290
+
+Local minimum possible.
+
+fminunc stopped because the final change in function value relative to 
+its initial value is less than the default value of the function tolerance.
+
+<stopping criteria details>
+
+Cost at theta found by fminunc: 0.408754
+Traing for label# 4
+Cost at initial theta (zeros): 0.693147
+Start training....
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0           0.693147                          7.82                
+     1            0.36146      0.0058112           1.68           2
+     2           0.312984      0.0335798          0.403           4
+     3             0.2817       0.163995          0.208           7
+     4           0.206466        1.78811          0.284          17
+     5           0.202159      0.0158425         0.0483           5
+     6           0.169531        1.69303          0.153          31
+     7           0.168801     0.00491599         0.0248           4
+     8           0.148995        2.02705          0.186          58
+     9           0.147864     0.00385129         0.0171           4
+    10           0.145134       0.645129         0.0301          31
+    11           0.145099     0.00106287        0.00464           4
+    12           0.139957        1.76143         0.0256         105
+    13           0.139933    0.000819876        0.00223           4
+    14           0.139612       0.669664        0.00232          67
+    15           0.139604     0.00689406       0.000348          12
+    16           0.139488       0.475995       0.000325         142
+    17           0.139488     0.00523937       4.79e-05          17
+
+Local minimum possible.
+
+fminunc stopped because the final change in function value relative to 
+its initial value is less than the default value of the function tolerance.
+
+<stopping criteria details>
+
+Cost at theta found by fminunc: 0.139488
+Traing for label# 5
+Cost at initial theta (zeros): 0.693147
+Start training....
+
+                                Norm of      First-order 
+ Iteration        f(x)          step          optimality   CG-iterations
+     0           0.693147                          7.73                
+     1           0.304103     0.00609956           2.01           2
+     2           0.228939       0.011756          0.719           3
+     3           0.195097      0.0628996          0.267           4
+     4           0.180707      0.0846446            0.1           4
+     5           0.168722       0.471073         0.0376           7
+     6           0.167191       0.029211         0.0146           3
+     7            0.16644      0.0501324        0.00562           3
+     8           0.166121      0.0592227        0.00211           3
+     9           0.166017       0.048264       0.000797           3
+    10           0.165987      0.0255575       0.000312           3
+    11           0.165971      0.0314704       0.000131           4
+    12            0.16596      0.0516279        4.9e-05           7
+    13           0.165958      0.0145687        2.4e-05           4
+    14           0.165957     0.00756734       1.11e-05           2
+
+Local minimum possible.
+
+fminunc stopped because the final change in function value relative to 
+its initial value is less than the default value of the function tolerance.
+
+<stopping criteria details>
+
+Cost at theta found by fminunc: 0.165957
+%100 of testing is done....
+For classifier# 1: { TPR : 0.07143 | FPR : 0.21053 | ROC : 0.3393 }
+For classifier# 2: { TPR : 0.51786 | FPR : 0.56452 | ROC : 0.9173 }
+For classifier# 3: { TPR : 0.09091 | FPR : 0.22449 | ROC : 0.4050 }
+For classifier# 4: { TPR : 0.12903 | FPR : 0.04698 | ROC : 2.7465 }
+For classifier# 5: { TPR : 0.00000 | FPR : 0.00000 | ROC : NaN }
+----------- 1 -----------
+
+ans =
+
+     3    13
+     1     6
+     2     6
+     4     1
+
+----------- 2 -----------
+
+ans =
+
+     2    18
+     1     5
+     3     2
+     4     2
+
+----------- 3 -----------
+
+ans =
+
+     3    13
+     1    12
+     2     4
+     4     1
+
+----------- 4 -----------
+
+ans =
+
+     3    11
+     2     7
+     1     6
+     4     3
+
+----------- 5 -----------
+
+ans =
+
+     1    12
+     3    12
+     2     6
+     4     2
+
+General error rate: 78.89
+Class error rate: 
+[1] => { e: 0.144444 | c: 28 }
+[2] => { e: 0.150000 | c: 56 }
+[3] => { e: 0.166667 | c: 33 }
+[4] => { e: 0.150000 | c: 31 }
+[5] => { e: 0.177778 | c: 32 }
+Do you want to save results?[Y/n] y
+Please enter the destination file's name: pd3
+Saved.
