@@ -1,0 +1,60 @@
+#!/bin/bash
+# promt error msg and exit with 0 status code
+function __error()  { echo -e "\e[31m$1\n[ ABORT ]\e[m"; exit 0; }
+function __log()    { echo -e "\e[33m$1\e[m"; }
+function __success(){ echo -e "\e[32m$1\e[m"; }
+function __output()  { local txt; txt="$1"; if [ "${#txt}" -ne 0 ]; then echo -e "$txt"; fi }
+if ! [ -e .makefiles ]; then
+    mkdir .makefiles
+fi
+cd .makefiles
+# if no input passed
+if [ $# -eq 0 ]; then
+    __error "You have to specify the target source code file name"
+# if more than one input pathed
+elif [ $# -gt 2 ]; then
+    __error "Too much input(expected only one input at a time!)"
+fi
+# fetch current script absolute path
+SCRIPT_ABSOLUTE_PATH=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)/`basename "${BASH_SOURCE[0]}"`
+# fetch target file absolute path
+SOURCE_FULL_PATH=`readlink -f ../$1`
+SOURCE_BASE_NAME=`basename $SOURCE_FULL_PATH`
+SOURCE_EXTENSION="${SOURCE_BASE_NAME##*.}"
+SOURCE_NAME="${SOURCE_BASE_NAME%.*}"
+TARGET_COMPILED_FILE=$SOURCE_NAME
+TARGET_HEX_FILE=$SOURCE_NAME.hex
+# if the current script has been used as target file
+if [ "$SOURCE_FULL_PATH" == "$SCRIPT_ABSOLUTE_PATH" ]; then
+    __error "Invalid input."
+fi
+# check if any valid source path found
+if [ "${#SOURCE_FULL_PATH}" -eq 0 ]; then
+    __error "The file does not exist"
+fi
+__log "> Cleaning...\c"
+rm $TARGET_COMPILED_FILE $TARGET_HEX_FILE>/dev/null 2>&1
+__success "\r[ DONE ] Cleaned"
+# if the sencond argumnet is `--clean' then do not proceed
+if [ "$2" == "--clear" ]; then
+    exit 0
+fi
+__log "> Compiling...\c"
+OUTPUT_COMPILE=`avr-gcc -mmcu=atmega32 $SOURCE_FULL_PATH -o $TARGET_COMPILED_FILE -O1 2>&1`
+if [ "${#OUTPUT_COMPILE}" -ne 0 ]; then
+    __error "\n$OUTPUT_COMPILE"
+    exit $?
+fi
+__success "\r[ DONE ] Compiled"
+__output $OUTPUT_COMPILE
+__log "> Generating the hex file...\c"
+OUTPUT_HEX=$(avr-objcopy -O ihex $TARGET_COMPILED_FILE $TARGET_HEX_FILE 2>&1)
+if ! [ -e $TARGET_HEX_FILE ]; then
+    __error "\n$OUTPUT_HEX"
+fi
+__success "\r[ DONE ] HEX File           "
+__output $OUTPUT_HEX
+__log "> Burning ..."
+sudo avrdude -c usbasp -p m32 -V -U flash:w:$TARGET_HEX_FILE
+__output "\r[ DONE ]"
+exit 0

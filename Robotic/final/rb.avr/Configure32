@@ -1,0 +1,4 @@
+#!/bin/bash
+L_FUSE='0xf4'
+H_FUSE='0xdf'
+sudo avrdude -c usbasp -p m32 -U lfuse:w:$L_FUSE:m -U hfuse:w:$H_FUSE:m
