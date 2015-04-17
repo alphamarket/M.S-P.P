@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+\newcommand{\کا}{\lr{k-anonymity} }
+\newcommand{\سا}{\lr{search log} }
+\newcommand{\ما}{\lr{micro-aggregates} }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{بازبینی\\
+\lr{User k-anonymity for privacy preserving\\data mining of query logs}}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\null
+\vfill
+% make this very first page un-numbered
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+این مقاله به مشکل حفظ حریم شخصی افراد در اطلاعات بدست آمده از موتورهای جستجو پرداخته است. برای نشان دادن اهمیت مساله نمونه مثال از شرکت \lr{AOL} آورده است که برای منظور کمک به جامعه پژوهشی بازیابی اطلاعات باعث گردید اطلاعات شخصی برخی از کاربرانش افشا شود برای همین مساله برای حفظ اطلاعات شخصی افراد قبل از اینکه گزارشات جستجوها\زیرنویس{\lr{Search log}} برای عموم ارائه شود نیاز است که یک عملیات پنهان\ سازی\زیرنویس{\lr{Anonymize}} بروی داده\ ها اعمال شود؛ ولی تعیین اینکه تا چه حد داده\ ها نیاز به پنهان\ سازی\زیرنویس{\lr{Degree of privacy}} دارند، سخت می\ باشد. بنابراین سعی دارد که روشی ارائه دهد که توازنی بین حفظ اطلاعات شخصی افراد و عدم از دست رفت اطلاعات واقعا مفید موجود در داده\ های جمع\ آوری شده از موتورهای جستجو ارائه دهد.\بند
+این مقاله با نام بردن چندین کار قبلی مبنی بر اینکه آن\ ها نیز از روش \کا استفاده کرده\ اند ولی بطور کامل تضمین نمی\ کردند که معیار $k$ در  \کا رعایت شده است -- زیرا با حذف داده\ ها به این منظور می\ رسیدند. نوآوری این مقاله در ارائه\ ی روشی برای تضمین معیار \کا در داده\ های جستجو با استفاده از میکرو-دسته\زیرنویس{\ما} بدون اینکه هیچ یک از داده\ ها صراحتا از \سا حذف شده باشند.\بند
+این مقاله سپس به شرح مفهوم \ما پرداخته است. که شرح داده که شامل دو بخش می\ شود پارتیشن کردن و بعد متراکم کردن داده\ ها است. و همچنین آورده که برای این منظور یک جنگلی از درختان باید تشکیل شود که که هر درخت متعلق به یکی از کاربران است و شاخه\ های این درختان شامل جستجوهای آن کاربر می\ باشد. و سپس معیار فاصله را برای هر جستجو معرفی کرده است.\بند
+بطور خلاصه اگر بخواهیم روش مطرح شده با استفاده از \ما را بگوییم می\ توان گفت که ابتدا داده\ ها با توجه به معیار فاصله مطرح شده ریز-دسته\ بندی\زیرنویس{\lr{Clustering}} می\ شوند سپس مرکز دسته\ ها به عنوان نماینده آن دسته می\ شود و یک کوئری\زیرنویس{\lr{Query}} به عنوان نماینده آن کوئری\ ها ارائه می\ شود. که علاوه بر اینکه نمایانگر کوئری\ های هم دسته خود می\ باشد به علت نوع انتزاعی\ ای این نماینده دارد به خوبی می\ تواند اطلاعات شخصی افراد را مخفی نگه دارد -- در اینجا $k$ تعداد کابران موجود در هر دسته می\ باشند.\بند
+از مزایای روش ارائه شده در این مقاله علاوه بر سادگی روش می\ توان گفت که تضمین می\ کند معیار $k$ در \کا رعایت شده است و سپس اینکه اطلاعات شخصی افراد را می\ تواند با نسبت خوبی حفظ کند بدین نحو که بعد از پنهان\ سازی داده\ ها به ازای هر کوئری $k$ کاربر مرتبط با آن کوئری می\ توان نسبت داد؛ همچنین مقاله آورده است که روش پیشنهادی از نظر محاسباتی حداکثر کارایی را دارد.\بند
+از آنجایی که روش مطرح شده در حالت پایه در واقع دسته\ بندی می\ باشد بنابراین تمامی معایب مطرح شده در دسته\ بندی را به طور ضمنی دارد مانند بررسی داده ها با ابعاد بالا نیاز به زمان بیشتری میخواهد، کارایی روش به فاصله تعریف شده وابسته می\ باشد. و همچنین مقاله در مورد راه\ حل\ هایی در مقابله به کوئری\ های پرت\زیرنویس{\lr{Outlier}} و تاثیر داده\ های پرت بر میزان پنهان\ سازی داده\ ها حرفی نزده و همان\ طور که می\ دانیم خوشه\ بندی به داده\ های پرت حساس می\ باشد که مقاله از کنار این موضوع بدون بررسی گذشته است. همچنین یکی از معایب دیگری که می\ توان به روش ارائه شده نسبت داد این است که میزان تعیین $k$ مناسب نیز سخت می\ باشد که در اینجا کل عملیات بر مبنای مقدار $k$ بنا شده است. از طرف دیگر روش ارائه شده همه\ ی ویژگی\ های موجود در رکورد\ ها با یک دید یکسان نگاه می\ کند در حالی که اهمیت مخفی\ سازی برخی ویژگی\ ها از برخی ارجهیت دارد و این ارجهیت در خوشه\ بندی\ های اعمال شده تاثیر داده نمی\ شود مثلا اهمیت پنهان\ سازی زمان جستجو از لینک کلیک شده بعد از جستجو کمتر است و این ارجهیت می\ تواند در نحوه\ ی شکل یافتن میکرو-دسته\ ها موثر باشد که مقاله به این موضوع نیز نپرداخته است.
+\end{document}
