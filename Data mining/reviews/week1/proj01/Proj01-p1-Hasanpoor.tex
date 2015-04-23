@@ -1,0 +1,69 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{بازبینی\\
+\lr{Application of text mining in the biomedical domain}}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\null
+\vfill
+% make this very first page un-numbered
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+این مقاله بیشتر به عنوان یک مروری\زیرنویس{\lr{Survey}} بر روش\ های استخراج متن\زیرنویس{\lr{Text Mining}} از متون علمی پزشکی می\ باشد. بنابراین نوآوری یا بهبود خاصی در مورد روش\ های موجود برای استخراج متون ارائه نداده است، همچنین راه\ حلی در رابطه با مشکل خاصی نیز ارائه نداده است؛ بنابراین این بازبینی دارای قسمت\ های الزامی مطرح شده در رابطه به بازبینی\ ها نمی\ باشد. در این نوشتار سعی من بر انتقال خلاصه\ ای از متن مقاله می\ باشد.\بند
+در ابتدا مقاله سعی کرده که نشان دهد چرا استخراج متن از متون علمی پزشکی دارای اهمیت زیادی است. سپس یک روال کلی از مراحل مرسوم در استخراج متون آورده است. اولین گام  که در استخراج متن  باید صورت بگیرد بازیابی منابع متنی\زیرنویس{\lr{Information Retrieval}} مربوطه با توجه به موضوع مورد علاقه می\ باشد. که این فرایند با استفاده از موتورهای جستجوی پایگاه\ های علمی با استفاده از تعدادی کلمات کلیدی انجام می\ پذیرد. سپس مرحله بعد شامل شناسایی متون موجودیت\ های نامی\زیرنویس{\lr{Named Entity Recognition}} در متون بدست آمده از مرحله قبل است. که در این مرحله به دنبال کلمات مرتبط با کلمات کلیدی و ارتباط آنها با یک دیگر هستیم -- که شامل کلمات مترادف(معادل) با کلمات کلیدی می\ باشد. مرحله بعد شامل استخراج اطلاعات\زیرنویس{\lr{Information Extracion}} می\ باشد. که هدف از این مرحله بدست آوردن ارتباطات بین مفاهیم اسخراج شده از متون می\ باشد که دو روش برای این مرحله معرفی شده است --
+\lr{Co-occurrence-based methods} و \lr{NLP-based methods}.
+بعد از مرحله\ ی استخراج اطلاعات به مرحله\ ی کشف دانش\زیرنویس{\lr{Knowledge discovery}} می\ رسیم و که آورده که به سیستم\ های استخراج متن بهتر است با دید استخراج اطلاعات نگاه شود و باید این سیستم بتواند روابط مخفی موجود در متون بین کلمات کلیدی را بر اساس حقایق شناخته شده آشکار کند و در اینجا نیز روشی به نام
+\lr{The ABC principle}
+جهت استخراج اطلاعات آورده است.\بند
+در قسمت دیگر مقاله نیز کابردهایی از استخراج متون برای متون عملی پزشکی آورده است، که ۳ مورد از آنها به طور خلاصه در زیر شرح داده می\ شود.\\
+۱, ۲. \lr{Drug–target discovery}, \lr{Drug repositioning}:
+آورده است که استخراج متن به طور گسترده در جستجو برای اهداف دارویی جدید و دارو استفاده شده است. و فرق این با \lr{Drug repositioning
+} در این است که در \lr{Drug repositioning} اطلاعات در مورد یک داروی شناخته شده و اثرات آن برای جستجوی یک کاربرد جدید مورد استفاده واقع می شود.\\
+۳. \lr{Adverse events}:
+در حالی که برای کشف دارو و اهداف دارویی\زیرنویس{\lr{drug-target}} یکی از کاربردهای عمده\ ی استخراج متن در متون پزشکی است، از دیگر کاربردهای مهم دیگر استخراج عوارض جانبی داروها می\ باشد.\\
+البته به جز کاربردهای بالا ۳ کاربرد دیگر نیز آورده است که بنده درک درستی از آنها بدست نیاوردم و همچنین در هر کدام از کابردها، کارهای انجام شده را نیز آورده است که از لیست کردن آنها در این نوشتار اجتناب می\ کنیم.\بند
+همانطور که در ابتدای نوشتار آورده\ ام این مقاله بیشتر یک مرور بوده برای همین جای زیادی جهت بازبینی و ارزیابی ندارد.
+\end{document}
