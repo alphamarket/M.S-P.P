@@ -1,0 +1,61 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+\renewcommand{\.}{\lr}
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{بازبینی\\
+\lr{Two scalable algorithms for associative text classification}}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\null
+\vfill
+% make this very first page un-numbered
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+این مقاله در مورد طبقه\ بندی انجمنی متون\زیرنویس{\.{Associative Text Classification}} می\ باشد، مساله\ ای که در مقاله بیان شده و سعی در حل این مساله داشته این است که آورده در برخی الگوریتم\ های از این نوع برای بالا بردن کارایی و دقت خود تعداد بسیار زیادی قوانین انجمنی زیادی را تولید می\ کنند، بنابراین زمان زیادی را این الگوریتم ها نیاز دارند و همچنین در برخی از موارد ممکن است به علت تولید بیش از حد نیاز قوانین کارایی پایینی داشته باشند. بنابراین این مقاله آمده است ۲ عدد الگوریتم همکار جهت افزایش کارایی و کاهش پیچیدگی محاسباتی برای این هدف معرفی کرده است که اولی قوانین استخراج شده را به صورت موثر ذخیره می\ کند و دیگری سرعت تطبیق قوانین\زیرنویس{\.{Rule Matching}} بالا می\ برد.\\
+به طور کلی هدف يک دسته\ بند متون، دسته\ بندي اسناد در قالب تعداد معینی  دسته\ هاي از پیش تعیین شده می\ باشد. هر سند می\ تواند در يک، چند و يا هیچ دسته\ اي قرار بگیرد. این موضوع می\ تواند در قالب يک يادگیري خودکار قرار گیرد تا با استفاده از آن بتوان هر سند را به طور خودکار به دسته\ اي نسبت داد.\\
+در اين مقاله، از روش دسته\ بندي بر مبناي قواعد انجمنی که از روي فرايند کاوش الگوهاي مکرر مجموعه داده\ هاي آموزشی تولید شده  استفاده کرده\ اند، می شود. اين فرآيند با فرآيندي که در داده کاوي داده\ هاي بزرگ پايگاه داده\ ها استفاده می شود يکسان می\ باشد. استفاده از قواعد انجمنی و ترکیب آن با قواعد دسته\ بندي و ايجاد مدل جديدي با عنوان دسته\ بندي انجمنی و استفاده از آن براي دسته\ بندي متون می باشد.\بند
+در مورد نقات قوت روش ارائه شده می\ توان گفت که به علت اینکه روش ارائه شده به صورت ماژولار\زیرنویس{\.{Modular}} ارائه شده اند -- یعنی به دوقسمت ذخیره\ سازی و تطبیق قوانین تقسیم شده است، کلیه فواید حاکم به سیستم\ های ماژولار را دارا می\ باشد و اینکه با توجه به اینکه تطبیق قوانین یکی از وقت\ گیرترین فاز اجرایی الگوریتم\ های طبقه\ بندی انجمنی می\ باشد بنابراین با پرداختن به این فاز و تلاش برای افزایش سرعت این فاز از امتیازات این روش می\ توان به\ حساب آورد. از دیگر مزایای این روش می\ توان به قابلیت تفسیر ساده، درک آسان قواعد توسط انسان اشاره کرد. حذف  قواعد ضعیف می تواند تا حد فوق\ العاده دقت دسته\ بندي را افزايش دهد. و همچنین ويژگی\ ها هم می\ توانند منفرد باشند وهم چندگانه، يعنی می\ توان از اطلاعات ترکیبی ويژگی\ هاي چندگانه استفاده کرد.\بند
+دسته\ بندي بر مبناي قواعد انجمنی داراي معايبی هم هست که از آن جمله افزايش بعد فضاي برداري ويژگی\ ها می\ باشد که براي رفع اين مشکل از تکنیک\ هاي کاهش بعد فضاي ويژگی\ ها استفاده می شود، و همچنین افزايش تعداد قواعدي که در فاز آموزش تولید شده\ اند و باعث افزايش بیهوده زمان محاسبات و کاهش تاثیر در دسته\ بندي انجمنی می شوند. براي رفع اين مشکل هم از تکنیک هرس کردن قواعد استفاده می\ شود. در اين تکنیک فقط قواعدي که داراي کیفیت و تأثیر بالايی هستند انتخاب می شوند.
+\end{document}
