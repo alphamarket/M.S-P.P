@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+این مقاله در مورد تشخیص حساب\ های مشکوک به کلاه\ برداری می\ باشد، همانطور که گفته است حساب\ های مرتبط با کلاه\ بردارهای دارای یک سری ویژگی\ هایی می\ باشد. این مقاله در پی پیدا کردن این ویژگی\ ها با استفاده از الگوریتم های قوانین انجمنی\زیرنویس{\lr{Association Rule}} و طبقه\ بند کننده\ ی بیزین\زیرنویس{\lr{Bayesian Classifier}} می\ باشد. دیتاست مورد استفاده در این مقاله به مربوط به داده\ های تراکنشی یکی از بانک\ ها که از اواخر سال ۲۰۰۹ تا اوایل ۲۰۱۰ جمع\ آوری شده است می\ باشد. این مقاله ۳ هدف را به عنوان اهداف اصلی خود آورده است که شامل موارد زیر می\ باشند.
+\begin{enumerate}
+    \itemsep-1em 
+    \item تشخیص ویژگی\ های حساب\ های مرتبط با کلاه\ برداری
+    \item پیاده\ سازی سیستمی جهت تشخیص حساب\ های مشکوک به کلاه برداری
+    \item ارائه مواد مرجع برای تشخیص حساب\ های جعلی در موسسات مالی، به منظور کاهش احتمال کلاه\ برداری تلفن \lr{ATM} و کاهش زیان های مرتبط با چنین کلاه\ برداری ها.
+\end{enumerate}
+و سعی کرده تا انتهای مقاله این اهداف را ارضا کند.\بند
+همانطور که پیشتر گفته شد مقاله از دو روش قوانین انجمنی و طبقه\ بند کننده\ ی بیزین جهت استخراج ویژگی\ های مرتبط با حساب\ های جعلی\زیرنویس{\lr{Fraudulent}} استفاده کرده است. بنابراین کمی در مورد این دو روش آورده است. و هرکدام از این روش\ ها توانسته\ اند یک دسته از ویژگی\ های مرتبط با حساب\ های جعلی استخراج کنند و در انتها با ترکیب این ویژگی\ ها به یک دسته ویژگی جامع رسیده است. و در انتها به ۶ ويژگی حساب\ های جعلی دست یافته است.\بند
+این مقاله نوآوری \textbf{جدید} نداشته است، زیرا از ۲ روش موجود قوانین انجمنی و بیزین جهت تشخیص حساب\ های جعلی استفاده کرده است. بنابراین در مورد فواید ایده\ ی این مقاله باید به فواید ۲ روش مذکور مراجعه کرد. وگرنه به خودی خود فواید خاصی این مقاله نداشته است.\بند
+در مورد معایب این مقاله علاوه بر معایب معلوم ۲ روش مورد استفاده می\ توان گفت که این مقاله هیچ اطلاعات دیگری جز اینکه از چه روش\ هایی برای استخراج ویژگی\ ها و اینکه چه ویژگی\ هایی استخراج شده است در اختیار خواننده نگذاشته است و همچنین ساختار داده\ ای معرفی شده مختص به ساختار داده\ ای یکی از بانک\ ها می\ باشد و قابلیت انتشار یافته\ های مقاله به سایر سیستم\ های مالی وجود ندارد -- که یکی از عیب\ های بزرگ این مقاله می\ باشد.
+\end{document}
