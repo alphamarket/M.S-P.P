@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{بازبینی\\
+\lr{Application of data mining techniques in stock markets\\A survey}}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\null
+\vfill
+% make this very first page un-numbered
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+این مقاله یک مرور\زیرنویس{\lr{Survey}} بر کاربردهای داده\ کاوی در بازار بورس می\ باشد. در نتیجه این نوشتار شامل ۳ بخش تاکید شده در رابطه با استانداردهای ریویو ها نمی\ باشد(چون در اصل نوآوری خاصی به عمل نیامده است) بنابراین به یک خلاصه\ ای از مقاله اکتفا میکنم.\بند
+مقاله در مورد کاربردهایی از داده\ کاوی نظیر درخت تصمیم، شبکه\ های عصبی، قوانین انجمنی، تحلیل\ عاملی\زیرنویس{\lr{Factor Analysis}} در بازار بورس می\ باشد. بعد از تعریف بازار بورس، هدف از داده\ کاوی را آورده است که شامل پیدا کردن الگوها یا روابط بین متغییرها موجود در داده\ های تجاری می\ شود. همچنین آورده است که منظور از پیش\ بینی بازار سهام شامل کشف روند بازار، برنامه\ ریزی استراتژی\ های سرمایه\ گذاری، شناسایی بهترین زمان برای خرید سهام و آنچه سهام برای خرید می\ باشد.\\
+یکی از مشکلات مهم در امور مالی مدرن یافتن راه\ های کارآمد، خلاصه\ سازی و تصویرسازی\زیرنویس{\lr{visualization}} داده های بازار سهام با استفاده از تکنیک های داده\ کاوی مانند درخت\ تصمیم گیری، شبکه\ های عصبی، قوانین\ انجمن، تحلیل\ عاملی و ارائه\ ی نتایج و موقعیت کنونی بازار به افراد متخصص برای تصمیم\ گیری\ های اقتصادی می\ باشد.\بند
+سپس بطور خلاصه ۶ تکنیک داده\ کاوی نام برده شده را توضیح داده است -- که از توضیح تکرار مکررات خودداری میکنیم. بعد از معرفی ۶ تکنیک کاربردهایی از هرکدام را شرح داده است. به در مقدمه این توضیحات به تعریفی شفاف\ تر از تعریف ارائه شده قبلی در رابطه با نقش داده\ کاوی در بازار سهام آورده است؛ بدین صورت که «از آنجایی که بازار سهام پیچیده، غیر-خطی پویا است. پیش\ بینی بازار سهام، تغییر نرخ ارز، ورشکستگی، درک و مدیریت ریسک مالی، معاملات آتی، رتبه\ بندی اعتباری، مدیریت وام و تجزیه و تحلیل پول\ شویی از وظایف مالی اصلی برای داده کاوی می\ باشد.».\\\\
+\textbf{کاربرد درخت\ تصمیم در بازار بورس}\بند
+در بازار سهام یافتن بهترین سهم و بهترین زمان برای خرید از علایق سرمایه\ گذاران بوده است. که محققانی با ترکیب قانون فیلتر\زیرنویس{\lr{Filter Rule}} و درخت تصمیم به حل این مساله پرداخته\ اند. و آورده است که از قانون فیلتر از طرف سرمایه\ گذاران استقبال زیادی شده است.\\\\
+\textbf{کابرد شبکه\ عصبی در بازار بورس}\بند
+یکی از مزایایی شبکه\ های عصبی باعث شده است در بازار بورس کابرد پیدا کنند این است که آن\ ها می\ توانند هر تابع غیرخطی را تقریب کنند. و آورده است که با استفاده از شبکه\ های عصبی سیستمی طراحی کرده\ اند که می\ تواند علائم خرید و فروش را با توجه به روند آینده به بازار سهام را پیش\ بینی کند، که برای تصمیم\ گیری سرمایه\ گذاران مقید واقع شد.\\\\
+و همچنین در مورد کارهایی راجع به ۴ کاربرد دیگر داده\ کاوی آورده است. همانطور که گفته شد این مقاله یک مرور بود، جای مانور زیادی برای ریویو ندارد.
+\end{document}
