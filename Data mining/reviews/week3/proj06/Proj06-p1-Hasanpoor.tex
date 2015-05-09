@@ -1,0 +1,78 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{بازبینی\\
+\lr{Predicting protein–protein interactions based\\only on sequences information}}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\null
+\vfill
+% make this very first page un-numbered
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+\lr{PPI} ها مرکزی برای اکثر فرآیندهای بیولوژیکی می باشند. اگر چه تلاشهایی برای پیش بینی \lr{PPI} ها و توسعه شبکه های متعامل پروتئینی انجام شده است اما این روش ها به دلیل کمبود اطلاعات پروتئین ها  محدود است . در این مقاله ، یک روش برای پیش بینی \lr{PPI} تنها با استفاده از اطلاعات توالی پروتئین\ ها ارائه شده است. این روش بر اساس یک الگوریتم یادگیری \lr{SVM} همراه با یک تابع کرنل و یکی از ویژگی های سه گانه متقارن برای توصیف اسیدهای آمینه توسعه داده می شود.\بند
+کار جدیدی که در این مقاله انجام می\ شود این است که پیش\ بینی\ های \lr{PPI} ها را فقط بر اساس توالی پروتئین\ ها در می\ آورند. و همچنین خلاصه می\ کند ویژگی\ های جفت پروتئین های بر اساس این کلاس\ بندی های آمینواسیدهایی که کرده است. سپس از یک تابع کرنل استفاده کرده است. همچنین آورده است که برای پیش\ بینی \lr{PPI} براساس توالی، یکی از چالش\ های محاسباتی اصلی که وجود دارد این است که یک راه مناسب برای توصیف اطلاعات مهم \lr{PPI} پیدا کنیم. برای حل این مشکل یک توصیف\ کننده \lr{Conjoint Triad} معرفی شده است که خصوصیات یک آمینواسید و دو همسایه کناری را در نظر میگیرد و به عنوان یک واحد ۳ تایی ارائه میدهد. که این روش می\ تواند کلاس\ ها را با توجه به آمینواسید\ ها متفاوت کند -- که راه\ حل اول مقاله را شامل می\ شود.\بند
+مقاله می\ آید با استفاده از یک \lr{SVM} و یک تابع کرنل و یک توصیف کننده به عنوان راه\ حل اول استفاده می\ کند. اولین کاری که میکند آنزیم\ ها را در ۷ عدد کلاستر، دسته\ بندی می\ کند. از آنجایی که ویژگی\ ها و توالی پروتئین\ ها خیلی آنزیم دارند؛ هر خوشه را به همراه دو همسایه چپ و راست آن را در نظر می\ گیرد و این واحد ۳ تایی را به عنوان ویژگی کلی در نظر می\ گیرد. فضای برداری با
+$(V, F)$
+نشان داده که هر عضو مجموعه
+$V$
+درواقع همان ۳تایی بدست آمده اند، و
+$F$
+نیز تکرار آن ۳تایی\ ها در توالی پروتئین می\ باشد. در مورد تعداد ویژگی\ ها نیز می\ توان گفت که از آنجایی که آن ۳تایی ها در کنار هم قرار گرفته\ اند و هرکدام از آنها ۷عدد مقدار داشتند پس درکل
+$7 \times 7 \times 7$
+ویژگی داریم.\بند
+حالا اگر طول پروتیئن خیلی طولانی باشد مقدار
+$F$
+که تکرارهایشان را نشان میداد، خیلی زیاد می\ شد در نتیجه نرمال سازی روی
+$F$
+انجام داده است.\بند
+در مورد مزایای روش ارائه شده می\ توان گفت که از
+\lr{S-Kernel}
+کرنل استفاده کرده است آمده در روش ارائه شده را با دیگر کرنل\ ها مقایسه کرده و نشان داده است که
+\lr{S-Kernel}
+بهتر از دیگر کرنل\ ها نتیجه داده است. و همچنین چون از
+\lr{SVM}
+استفاده کرده است چون شامل دو کلاس پارامتر ظرفیت و نوع کرنل می\ باشد که این پرامترها را با استفاده از روش\ هایی پیدا کرده است که همین عمل پیدا کردن پارامترهای مناسب باعث شده است که روش بهتر از دیگر روش\ ها جواب دهد. همچنین طبق مطالب گفته شده در مقاله می\ شود الگوریتم ارائه شده به انواع شبکه\ ها بسط داد -- شبکه\ های تک هسته\ ای، چند هسته\ ای و شبکه های متقاطع\زیرنویس{\lr{Crossover Networks}}.
+\end{document}
