@@ -1,0 +1,3 @@
+[submodule "vendors/jsoncons"]
+	path = vendors/jsoncons
+	url = https://github.com/noise2/jsoncons.git

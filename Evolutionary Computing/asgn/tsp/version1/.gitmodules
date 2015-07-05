@@ -1,0 +1,6 @@
+[submodule "test"]
+	path = test
+	url = https://github.com/noise2/ga-tsp-test.git
+[submodule "vendors/jsoncons"]
+	path = vendors/jsoncons
+	url = git@github.com:danielaparker/jsoncons.git

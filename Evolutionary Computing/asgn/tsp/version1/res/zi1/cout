@@ -1,0 +1,10 @@
+[√] Deserlization retrieved 929 objects from `data.cache`
+[√] Population initialized                            
+[√] Evolution has done!                               
+The best found solution's fitness: 192368
+The worst found solution's fitness: 212372
+[√] best solution rendered to `out.res``
+
+------------------------------
+Algorithm's execution took: 13251.00sec.
+

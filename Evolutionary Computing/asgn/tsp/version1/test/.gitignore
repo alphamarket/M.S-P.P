@@ -1,0 +1,7 @@
+*~
+*.o
+*.o.d
+*TODO
+dist
+.build
+*.pro.user

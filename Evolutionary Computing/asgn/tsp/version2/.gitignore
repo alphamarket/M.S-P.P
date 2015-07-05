@@ -1,0 +1,8 @@
+.build
+*.user
+*.dat
+*.autosave
+*.out
+*.pro*
+octave-workspace
+ofile

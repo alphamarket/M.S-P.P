@@ -1,0 +1,7 @@
+{
+    "mutation_prob"     : 0.1,
+    "crossover_prob"    : 0.8,
+    "max_generations"   : 2000,
+    "population_size"   : 10000,
+    "elit_prop"         : 0.1
+}

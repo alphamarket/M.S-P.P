@@ -1,0 +1,52 @@
+{
+    "meta": {
+        "nonspecific_flag"          : "N/A"
+    },
+    "population": {
+        "size"                      : 10000,
+        "elitism": {
+            "method"                : "%",
+            "ratio"                 : 1
+        },
+        "selection": {
+            "method_type"           : "tournament",
+            "method_details": {
+                "tournament": {
+                    "size_method"   : "%",
+                    "size"          : "10"
+                }
+            }
+        }
+    },
+    "combinations": {
+        "crossover": {
+            "prob"                  : 0.8,
+            "method"                : "XOI"
+        },
+        "mutation": {
+            "prob"                  : 0.2,
+            "method"                : "M_SWAP_RANGE"
+        }
+    },
+    "solution": {
+        "genes": {
+            "value_boundary"        : [0, "AUTO"],
+            "count_boundary"        : "AUTO"
+        },
+        "fitness": {
+            "method"                : "N/A"
+        }
+    },
+    "generations": {
+        "count_limit"               : "1000",
+        "storage_type"              : "N/A",
+        "storage_details": {
+            "mem"                   : "N/A",
+            "disk": {
+                "target-file"       : "N/A",
+                "format"            : "N/A",
+                "method"            : "N/A"
+            }
+        }
+    }
+}
