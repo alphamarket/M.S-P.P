@@ -1,0 +1,50 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile
+            }
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} }
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{سینماتیک چهارپره و یادگیری کنترل آن توسط\\یادگیری تقویتی}
+\author{داریوش حسن\ پور}
+\date{پاییز ۱۳۹۴}
+\maketitle
+چهارپره\زیرنویس{\lr{Quadrotor}} هلیکوپتر چندپره است که توسط چهار پره به پرواز و حرکت در می\ آید که به عنوان وسایل پره\ ای طبقه بندی می\ شوند.
+در این سمینار به ارائه\ ی یک مدل سینماتیکی از سینماتیک چهارپره خواهیم پرداخت، سینماتیک شاخه‌ای از دانش مکانیک کلاسیک است که حرکت اجسام و سامانه‌ها(گروهی از اجسام) را بدون درنظرگرفتن نیروهای عامل حرکت بررسی می‌کند. در این سمینار به تحلیل نیروهای وارد بر چهارچوب چهارپره نیز پرداخته و در نهایت توضیحی در مورد معادلات حرکتی چهارپره که رفتار چهارپره را با توجه به پارامترهای آن شرح می\ دهد، داده می\ شود.
+\end{document}
