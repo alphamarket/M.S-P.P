@@ -1,0 +1,37 @@
+@relation weka.datagenerators.classifiers.classification.RDG1-S_1_-n_100_-a_10_-c_2_-N_0_-I_0_-M_1_-R_10
+
+@attribute apresent {A,B,C}
+@attribute bstudy {A,B,C}
+@attribute hstudy {A,B,C}
+@attribute midex {A,B,F}
+@attribute finex {A,B,F}
+@attribute asgnmnt {A,B,C}
+@attribute resrch {A,B,C}
+@attribute projct {A,B,C}
+@attribute final {GOOD,AVG,FAILED}
+
+@data
+A,A,A,A,A,A,A,A,GOOD
+A,A,A,A,A,C,C,C,AVG
+C,C,A,F,A,A,A,A,FAILED
+A,C,B,B,B,C,B,A,AVG
+C,C,C,F,F,A,A,A,FAILED
+B,A,C,A,A,A,A,A,GOOD
+A,C,A,B,B,A,A,A,AVG
+A,A,C,A,A,C,C,C,GOOD
+C,C,A,A,F,A,A,A,FAILED
+B,A,A,A,B,A,C,A,AVG
+A,C,A,F,A,B,B,B,FAILED
+C,B,B,B,B,B,C,C,AVG
+B,B,A,A,F,B,B,B,FAILED
+A,B,A,B,B,C,B,B,AVG
+C,C,C,F,F,B,B,B,FAILED
+B,A,A,A,A,A,A,A,GOOD
+B,A,B,A,A,A,A,A,GOOD
+B,B,A,B,B,B,B,C,AVG
+B,A,B,F,B,A,B,C,FAILED
+A,A,B,B,B,B,B,B,GOOD
+B,A,A,A,A,A,A,A,GOOD
+A,C,C,B,B,A,B,B,AVG
+B,A,C,A,A,A,A,A,GOOD
+B,B,A,B,B,C,B,C,AVG

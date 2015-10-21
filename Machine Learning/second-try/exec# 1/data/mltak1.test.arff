@@ -1,0 +1,15 @@
+@relation weka.datagenerators.classifiers.classification.RDG1-S_1_-n_100_-a_10_-c_2_-N_0_-I_0_-M_1_-R_10
+
+@attribute apresent {A,B,C}
+@attribute bstudy {A,B,C}
+@attribute hstudy {A,B,C}
+@attribute midex {A,B,F}
+@attribute finex {A,B,F}
+@attribute asgnmnt {A,B,C}
+@attribute resrch {A,B,C}
+@attribute projct {A,B,C}
+@attribute final {GOOD,AVG,FAILED}
+
+@data
+A,A,A,F,A,A,A,A,?
+B,B,A,A,B,A,B,A,?

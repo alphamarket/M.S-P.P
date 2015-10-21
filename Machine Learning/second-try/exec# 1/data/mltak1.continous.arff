@@ -1,0 +1,37 @@
+@RELATION hypo
+
+@attribute apresent {A,B,C}
+@attribute bstudy {A,B,C}
+@attribute hstudy {A,B,C}
+@attribute midex {A,B,F}
+@attribute finex REAL
+@attribute asgnmnt {A,B,C}
+@attribute resrch {A,B,C}
+@attribute projct {A,B,C}
+@attribute final {GOOD,AVG,FAILED}
+
+@data
+A,A,A,A,70,A,A,A,GOOD
+A,A,A,A,80,C,C,C,AVG
+C,C,A,F,90,A,A,A,FAILED
+A,C,B,B,60,C,B,A,AVG
+C,C,C,F,40,A,A,A,FAILED
+B,A,C,A,88,A,A,A,GOOD
+A,C,A,B,77,A,A,A,AVG
+A,A,C,A,99,C,C,C,GOOD
+C,C,A,A,30,A,A,A,FAILED
+B,A,A,A,55,A,C,A,AVG
+A,C,A,F,95,B,B,B,FAILED
+C,B,B,B,75,B,C,C,AVG
+B,B,A,A,49,B,B,B,FAILED
+A,B,A,B,70,C,B,B,AVG
+C,C,C,F,25,B,B,B,FAILED
+B,A,A,A,90,A,A,A,GOOD
+B,A,B,A,100,A,A,A,GOOD
+B,B,A,B,70,B,B,C,AVG
+B,A,B,F,70,A,B,C,FAILED
+A,A,B,B,75,B,B,B,GOOD
+B,A,A,A,93,A,A,A,GOOD
+A,C,C,B,68,A,B,B,AVG
+B,A,C,A,100,A,A,A,GOOD
+B,B,A,B,80,C,B,C,AVG
