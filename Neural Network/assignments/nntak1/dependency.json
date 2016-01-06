@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Boost",
+        "description": "Boost is a set of libraries for the C++ programming language that provide support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, and unit testing.",
+        "site": "www.boost.org",
+        "installation": {
+            "version": "1.54.0",
+            "embedded" : false,
+            "command": {
+                "ubuntu": "sudo apt-get install libboost-all-dev"
+            }
+        }
+    },
+    {
+        "name": "Eigen",
+        "description": "Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
+        "site": "eigen.tuxfamily.org",
+        "installation": {
+            "version": "3.2.7",
+            "embedded" : true
+        }
+    },
+    {
+        "name": "MatIO",
+        "description": "MatIO is an C library for reading and writing Matlab MAT files.",
+        "site": "http://sourceforge.net/projects/matio/",
+        "installation": {
+            "version": "1.5.2",
+            "embedded" : false,
+            "command": {
+                "ubuntu": "./configure && make && sudo make install"
+            }
+        }
+    }
+]

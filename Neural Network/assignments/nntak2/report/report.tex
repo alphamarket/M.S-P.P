@@ -1,0 +1,194 @@
+\documentclass[10pt,a4paper]{article}
+% for margining standards
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+% for counting references as a section
+\usepackage[numbib,notlof,notlot,nottoc]{tocbibind}
+% useful packages
+\usepackage{
+                graphicx, setspace, fontspec, caption,
+                subcaption, float, polyglossia, rotating,
+                lscape, pdflscape, indentfirst, tocloft,
+                multirow, mathtools, currfile, amssymb,
+                pifont
+            }
+\usepackage[justification=centering]{caption}
+% paragraph related package
+\usepackage[parfill]{parskip}
+% use bzar font(THIS MUST BE LOADED BEFORE XePerian PACKAGE)
+\setmainfont{BZar.ttf}
+% the dear XePersian package
+\usepackage{xepersian}
+%
+% General settings goes here.
+%
+% lines space
+\renewcommand{\baselinestretch}{1.5}
+% paragraph first line indention
+\setlength{\parindent}{1cm}
+% paragraph spacing
+\setlength{\parskip}{1em}
+% set graphics' path
+\graphicspath{ {images/} {../logs/}}
+% make table of content dotted
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% define a new command as {half-space} in english
+\newcommand{\halfspace}{\hspace{0pt}}
+% define a new command as {half-space} in persian
+\newcommand{\نیمفاصله}{\halfspace}
+% define a shortcut for half-space in general
+\renewcommand{\ }{\halfspace}
+% define a new command for ease of use for rendering reference
+\newcommand{\renderref}[1] { \begingroup \let\clearpage\relax \include{#1} \endgroup }
+\newcommand{\بپ}{انتشار-به-عقب }
+\newcommand{\منست}{\lr{MNIST} }
+\newcommand{\مسی}{\lr{MSE} }
+\newcommand{\فوتنت}[1]{\footnote{\lr{#1}}}
+\newcommand{\xmark}{\ding{55}}%
+
+%
+% DOCUMENT BEGIN
+%
+\begin{document}
+\title{
+    \includegraphics[width=.2\textwidth]{iut}\\
+    گزارش تکلیف دوم درس شبکه\ های عصبی
+}
+\author{داریوش حسن\ پور آده}
+\date{۹۳۰۸۱۶۴}
+\maketitle
+\تاکید{توجه:‌} در کدها نوشته شده داده\ های آموزشی و ارزیابی و تست در داخل یک متغییر به صورت متوالی قرار داده شده\ اند و توسط اندیس\ ها با استفاده از پارامتر \lr{divideParam} نشان\ گذاری شده\ اند. و همچنین در کلیه\ ی قسمت\ های این نوشتار حداکثر تعداد دوره\فوتنت{Epoch} مقدار ۳۰ در نظر گرفته شده است(در پیروی از تکلیف ۱).
+\قسمت{قسمت ۱}
+کلیه زیرقسمت\ های این قسمت به پیروی از آنچه که در گزارش تکلیف ۱ آمده است شبکه\ ای با ۱ لایه\ ی مخفی و با ۱۰۰ نورون در لایه مخفی آزموده شده است.
+\زیرقسمت{یادگیری دسته\ ای}
+با استفاده از تابع یادگیری \lr{traingd} به یادگیری دسته\ ای\فوتنت{Batch} داده\ های آموزشی پرداختیم، که بعد از اتمام حداکثر تعداد دوره(۳۰) بهترین مقدار \مسی معادل با ۰.۲۹ بدست آمد\زیرنویس{کلیه نتایج مندرج در این نوشتار چندین بار تست شده و نتایج همیشه در یک بازه از نتایج مندرج در این نوشتار بدست آمده\ اند ولی ما برای نمونه مقدار معمول را در گزارش آورده\ ایم.}. که در شکل
+\ref{fig:sec1.1}
+نمودار عملکرد شبکه با یادگیری دسته\ ای آورده شده است. که مدت آموزش در این روش ۲.۵ دقیقه شد که بعد از اتمام حداکثر ۳۰ دوره به اتمام رسید.
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{1/1.1/perf}
+\caption{عمکرد شبکه در یادگیری دسته\ ای}\label{fig:sec1.1}
+\end{figure}
+\زیرقسمت{یاگیری برخط}
+با استفاده از تابع یادگیری \lr{trainc} به یادگیری برخط\فوتنت{Online} داده\ های آموزشی پرداختیم، که بعد از تعداد ۸ دوره\زیرنویس{به علت زیاد بودن مدت آموزش، بعد از ۸ دوره یادگیری را متوقف کردم -- ۸ دوره نزدیک به ۴ ساعت زمان برد.} بهترین مقدار \مسی معادل با ۰.۰۱۵۴ بدست آمد. که در شکل
+\ref{fig:sec1.2_perf}
+نمودار عملکرد شبکه با یادگیری برخط آورده شده است. که مدت آموزش در این روش ۴.۲۵ ساعت شد که بعد از اتمام ۸ دوره به اجرای برنامه خاتمه دادیم. در مقایسه\ ی این نتایج این قسمت با قسمت یادیگری دسته\ ای می\ توان گفت که آموزش این قسمت مدت زمان بیشتری نسبت به قسمت اول نیاز داشت و دوم اینکه سرعت همگرایی  این قسمت زیادتر از قسمت اولی بود زیرا در این قسمت با این حال بعد از ۸ دوره به صورت دستی آموزش را متوقف کردیم ولی در همین ۸ دوره به میزان کارایی ۰.۰۱۵۴ رسیده بود(یعنی در موقع قطع کردن فقط ۰.۰۰۵ واحد فاصله داشت تا مقدار هدف آن هم با ۲۲ دوره باقی مانده) و همچنین در نمودار \مسی این روش یادگیری دیده می\ شود که به صورت یک نواخت در هر دوره کاهش پیدا کرده است ولی در قسمت یادگیری دسته\ ای افت و خیز مشاهده می\ شود.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{1/1.2/perf}
+\caption{عمکرد شبکه در یادگیری برخط}\label{fig:sec1.2_perf}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{1/1.2/main}
+\caption{پنجره\ ی اجرایی آموزش شبکه برای یادگیری برخط -- بعد از ۴.۲۵ ساعت و ۸ دوره به صورت دستی برنامه متوقف کردیم و عملکردی معادل با ۰.۰۱۵۴ بدست آوردیم.}\label{fig:sec1.2_main}
+\end{figure}
+\زیرقسمت{یادگیری دسته\ ای با استفاده از مومنتم}
+با استفاده از تابع یادگیری \lr{traingdm} به یادگیری دسته\ ای با استفاده از مومنتم داده\ های آموزشی پرداختیم، که بعد از تعداد ۷ دوره بهترین مقدار \مسی معادل با ۰.۲۸۷ بدست آمد که در نهایت بعد از ۶ باز افزایش خطا در داده\ های ارزیاب برنامه به آموزش خود خاتمه داد. که در شکل
+\ref{fig:sec1.3_perf}
+نمودار عملکرد شبکه با یادگیری دسته\ ای با استفاده از مومنتم آورده شده است. که مدت آموزش در این روش تقریبا ۲ دقیقه شد که بعد از اتمام ۷ دوره برنامه به اجرای خود خاتمه داده است(به علت افزایش خطا در داده\ های ارزیاب). در مقایسه\ ی این نتایج این قسمت با قسمت یادیگری دسته\ ای می\ توان گفت که آموزش این قسمت برعکس قسمت اول ابتدا بهبود یافته ولی بعد از اولین دوره خطای آن افزایش یافته ولی به علت استفاده از مومنتم برنامه به کندی توانست این افزایش در خطا را کند و رو به کاهش نهد به همین علت برنامه بعد از ۶ دوره که توانست خطای خود را بروی داده\ های آموزشی بهتر از بهترین خطای بدست آمده کند(در دوره\ ی ۱) به اجرای خود خاتمه داد ولی با این حال نیز در حدود ۱٪ خطایی بهتر از آنچه که در قسمت ۱ بدست آمد را داشت.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{1/1.3/perf}
+\caption{عمکرد شبکه در یادگیری برخط}\label{fig:sec1.3_perf}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{1/1.3/main}
+\caption{پنجره\ ی اجرایی آموزش شبکه برای یادگیری دسته\ ای با استفاده از مومنتم -- همانطور که مشاهده می\ شود برنامه بعد از مواجه با ۶ دوره\ ی متوالی در افزایش خطا بروی داده\ های ارزیاب به اجرای خود خاتمه داده است.}\label{fig:sec1.3_main}
+\end{figure}
+\قسمت{قسمت ۲}
+برا برای این منظور تعدادی از شبکه\ های یک لایه، دو لایه و سه لایه را آزمودیم که نتایج هر لایه به صورت نمودارهای در جدول
+\ref{tab:mse_cmp}
+بدست آمد مقدایر \مسی جدول
+\ref{tab:mse_cmp}
+در شکل
+\ref{fig:sec2_cmp}
+آمده است که به وضوح از بین شبکه\ های موجود بهترین نتیجه را از شبکه با
+\lr{ID}
+برابر با ۱۱ و دومین بهترین نتیجه را در شبکه با
+\lr{ID}
+۳ بدست آمد که به ترتیب دارای ترکیبات
+$784 \times 50 \times 20 \times 10$
+و
+$784 \times 20 \times 10$
+می\ باشند -- همان\ طور که از نتایج پیدا است تغییرات در ترکیبات شبکه(چه در تعداد لایه و چه در تعداد نورون\ ها) باعث بهبود یا بدتر شدن نتایج می\ شود و از نتایج مشاهده می\ شود که افزایش تعداد نورون\ ها یا تعداد لایه\ ها لزوما باعث بهبود خروجی شبکه نمی\ شود\زیرنویس{این پاسخ و جدول
+\ref{tab:mse_cmp}
+و
+\ref{fig:sec2_cmp}
+جواب هر دو قسمت، قسمت دوم را به صورت یکجا داده است.}.\بند
+\begin{table}
+\begin{latin}
+\centering
+\begin{tabular}{c|c|c|c}
+ID & Layer\# & Net. Format & MSE\\
+\hline
+1 & 1 & $784 \times 10$ & 14.98\\
+\hline
+2 & 2 & $784 \times 10 \times 10$ & 0.188\\
+3 & 2 & $784 \times 20 \times 10$ & 0.184\\
+4 & 2 & $784 \times 25 \times 10$ & 0.204\\
+5 & 2 & $784 \times 50 \times 10$ & 0.279\\
+6 & 2 & $784 \times 75 \times 10$ & 0.287\\
+7 & 2 & $784 \times 100 \times 10$ & 0.291\\
+8 & 2 & $784 \times 150 \times 10$ & 0.326\\
+9 & 2 & $784 \times 200 \times 10$ & 0.319\\
+10 & 2 & $784 \times 300 \times 10$ & 0.268\\
+\hline
+11 & 3 & $784 \times 50 \times 20 \times 10$ & 0.165\\
+12 & 3 & $784 \times 200 \times 100 \times 10$ & 0.223\\
+\hline
+13 & 4 & $784 \times 50 \times 20 \times 20 \times 10$ & 0.401\\
+\end{tabular}
+\end{latin}
+\caption{مقایسه\ ی مقدار \مسی در ترکیبات مختلف شبکه}\label{tab:mse_cmp}
+\end{table}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.8\textwidth]{2/mse_cmp}
+\caption{ مقایسه\ ی مقادیر \مسی شبکه\ های جدول
+\ref{tab:mse_cmp}
+(بر اساس \lr{ID})
+به صورت نمودار -- به منظور مقایسه\ ی بهتر \مسی شبکه با \lr{ID} با مقدار ۱ که بدترین \مسی را دارد در نظر نگرفته شده است.
+}\label{fig:sec2_cmp}
+\end{figure}
+\قسمت{قسمت ۳}
+در جدول زیر نتایج روش\ های بهینه\ سازی و استفاده از تابع هزینه\ ی
+\lr{Cross-Entropy}
+آورده شده است. همان\ طور که مشاهده می\ شود نتایج ردیف\ های ۱ و ۲ نسبت به کلیه\ ی نتایج بدست آمده در این گزارش بهتر بودند ولی با روش\ هایی که از تابع هزینه\ ی
+\lr{Cross-Entropy}
+استفاده شده است هیچ\ یک نتیجه\ ی مطلوبی نسبت به آنچه که در جدول
+\ref{tab:mse_cmp}
+آمده است نداشته\ اند. همچنین دو روش بهینه\ سازی
+\lr{trainbr \& trainlm}
+کلا خطای کمبود حافظه(بروی سیستم با ۸ گیگابایت رم) دادند!!
+\begin{table}
+\begin{latin}
+\centering
+\begin{tabular}{c|c|c|c|c}
+ID & Train Func. & Cross Entropy & Net. Format & MSE\\
+\hline
+1 & trainscg & \xmark & $784 \times 100 \times 10$ & 0.075\\
+2 & trainrp & \xmark & $784 \times 100 \times 10$ & 0.097\\
+3 & trainbr & \xmark & $784 \times 100 \times 10$ & Memory Overflow!!\\
+4 & trainlm & \xmark & $784 \times 100 \times 10$ & Memory Overflow!!\\
+5 & traingd & \checkmark & $784 \times 100 \times 10$ & 3.604\\
+6 & trainscg & \checkmark & $784 \times 100 \times 10$ & 0.500\\
+7 & trainrp & \checkmark & $784 \times 100 \times 10$ & 4.130\\
+\end{tabular}
+\end{latin}
+\caption{مقایسه\ ی مقدار \مسی در ترکیبات مختلف شبکه}\label{tab:mse_cmp}
+\end{table}
+\قسمت{جمع\ بندی}
+در این گزارش عمکرد روش\ های مختلف و توابع هزینه\ ی مختلف مورد بررسی قرار گرفت و در طی آزمایشات متوجه شدیم که افزایش لایه\ ها و/یا تعداد نورون\ ها همیشه باعث بهتر شدن نتایج نمی\ شود و برای دیتاست \منست بهترین نتیجه\ ای که توانستیم به ازای ۳۰ دوره\ ی آموزشی بدست بیاوریم با استفاده از تابع بهینه\ سازی
+\lr{trainscg}
+با ترکیب
+$784 \times 100 \times 10$
+(جدول
+\ref{tab:mse_cmp}\
+)می\ باشد.\بند
+توجه شود که در این تکلیف به پیروی برخی از پارامترهایی که در اجرای تکلیف اول در نظر گرفته شد بود(از جمله حداکثر تعداد دوره\ ها و همچنین ترکیب شبکه) در سراسر گزارش(به جز قسمت دوم که ماهیت سوال ایجاب می\ کرد) از آن پارامترها استفاده شده است. همچنین کلیه\ ی نتایج آزمایشات در پوشه\ ی
+\lr{logs}
+به صورت دسته\ بندی شده به ازای هر سوال همراه کد آمده است که در صورت تمایل می\ توانید آن\ ها را هم چک کنید. در مورد توضیح در مورد کد هم که خیلی واضح است -- داده\ ها لود می\ شود و سپس یک شبکه\ ی
+\lr{feedforward}
+بر اساس داده\ ها و فرمت لایه\ های پنهان ایجاد شده و سپس با مشخص کردن نوع تابع بهینه\ سازی و تابع هزینه به آموزش شبکه می\ پردازیم.
+\end{document}
