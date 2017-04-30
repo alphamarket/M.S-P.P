@@ -1,0 +1,3 @@
+[submodule "Thesis/iThesis"]
+	path = Thesis/iThesis
+	url = https://github.com/noise2/thesis.git
